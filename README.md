@@ -121,39 +121,9 @@ Then click **Run RAG**.
 - Extract entities and relations from chunks and store them in a graph database.
 - Route questions to vector retrieval, graph traversal, or hybrid retrieval based on query intent.
 
-4. Evaluation framework (offline and online)
-- Build a gold dataset with question, expected answer, and citation labels.
-- Track retrieval metrics (Recall@k, MRR, nDCG) and generation quality (faithfulness, groundedness).
-- Add CI regression gates for prompt, retriever, and model changes.
-
-5. Observability and tracing
+4. Observability and tracing
 - Instrument the full pipeline with tracing (request path, retrieval steps, generation stages).
 - Monitor latency per stage, token and cost usage, cache hit rates, and failure modes.
 
-6. Hallucination and safety controls
-- Require citation-backed responses with source spans.
-- Add unsupported-claim detection, confidence scoring, and safe fallback responses.
 
-7. Performance and cost optimization
-- Persist and reload FAISS index instead of rebuilding per run.
-- Add embedding batching, semantic caching, and adaptive model routing for cost/latency tradeoffs.
 
-8. Security and governance
-- Move secrets to a proper secret manager and enforce key rotation.
-- Add PII detection/redaction, role-based document access, and auditable query logs.
-
-9. Service architecture
-- Split system into ingestion, indexing, retrieval, and generation services.
-- Add queue-based orchestration, backpressure handling, and horizontal scaling.
-
-10. Release engineering
-- Containerize with reproducible builds and pinned dependencies.
-- Implement CI/CD with tests, eval gates, canary releases, and A/B testing for model/prompt updates.
-
-11. Trust-centered UX
-- Show citations, confidence indicators, and "why these chunks" explanations.
-- Capture user feedback in-app and feed failures back into the eval dataset.
-
-12. Model lifecycle management
-- Maintain model and prompt version registry with rollback support.
-- Use blue/green deployment strategy for model changes with quality thresholds.
